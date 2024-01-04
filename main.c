@@ -23,6 +23,7 @@ int main(int argc, char *argv[])
 		{"pop", op_pop},
 		{"swap", op_swap},
 		{"add", op_add},
+		{"nop", op_nop},
 	};
 	size_t num_length = sizeof(instructions) / sizeof(instructions[0]);
 
