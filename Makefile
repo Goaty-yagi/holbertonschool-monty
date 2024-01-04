@@ -1,5 +1,6 @@
 CC = gcc
-SRC = $(wildcard *.c)
+SRCDIRS = operations utilities .
+SRC = $(wildcard $(addsuffix /*.c,$(SRCDIRS)))
 OBJ = $(SRC:%.c=%.o)
 NAME = monty
 RM = rm

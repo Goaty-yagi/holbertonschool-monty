@@ -37,6 +37,14 @@ typedef struct instruction_s
 	void (*f)(stack_type **stack, unsigned int line_number);
 } instruction_t;
 
+/**
+ * struct args - Structure to hold opcode and value
+ * @opcode: Pointer to a character representing the opcode
+ * @val: Integer value associated with the opcode
+ *
+ * This structure holds an opcode represented by a pointer to a character
+ * and an integer value associated with that opcode.
+ */
 typedef struct args
 {
 	char *opcode;

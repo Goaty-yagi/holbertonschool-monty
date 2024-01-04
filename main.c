@@ -1,13 +1,21 @@
-#include <stdio.h>
-#include <stdlib.h>
 #include "monty.h"
 
-
-/*void process_instructions()
-{
-	
-}
-*/
+/**
+ * main - Entry point of the Monty interpreter
+ * @argc: Number of arguments passed to the program
+ * @argv: Array of pointers to the arguments
+ *
+ * This function serves as the entry point for the Monty interpreter. It reads
+ * a file containing Monty bytecode instructions, parses each line into opcode
+ * and value (if present), matches the opcode with predefined instructions, and
+ * executes the corresponding operation on the stack. It uses various helper
+ * functions such as 'initialise_line', 'free_all_node', and calls the
+ * appropriate operation functions based on the opcode found.
+ *
+ * Returns:
+ * - EXIT_SUCCESS upon successful execution.
+ * - EXIT_FAILURE if arguments are incorrect or if file opening fails.
+ */
 
 int main(int argc, char *argv[])
 {
