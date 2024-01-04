@@ -1,6 +1,6 @@
 CC = gcc
-SRCDIRS = operations utilities .
-SRC = $(wildcard $(addsuffix /*.c,$(SRCDIRS)))
+SRC_DIRS := $(shell find . -type d)
+SRC = $(foreach dir,$(SRC_DIRS),$(wildcard $(dir)/*.c))
 OBJ = $(SRC:%.c=%.o)
 NAME = monty
 RM = rm
