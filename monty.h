@@ -46,6 +46,7 @@ typedef struct args
 void op_push(stack_type **stack, unsigned int line_number);
 void op_pall(stack_type **stack, unsigned int line_number);
 void op_pint(stack_type **stack, unsigned int line_number);
+void op_pop(stack_type **stack, unsigned int line_number);
 void initialise_line(char *line, args_t *args, int max_args);
 void free_all_node(stack_type **stack);
 

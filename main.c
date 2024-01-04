@@ -15,11 +15,12 @@ int main(int argc, char *argv[])
 	stack_type *stack = NULL;
 	char line[256];
 	args_t args;
-	unsigned int counter = 0;
+	unsigned int counter;
 	instruction_t instructions[] = {
 		{"push", op_push},
 		{"pall", op_pall},
 		{"pint", op_pint},
+		{"pop", op_pop},
 	};
 	size_t num_length = sizeof(instructions) / sizeof(instructions[0]);
 
@@ -39,15 +40,17 @@ int main(int argc, char *argv[])
 	{
 		line[strcspn(line, "\n")] = '\0'; /* Remove newline if present */
 		initialise_line(line, &args, 2);
+		counter = 0;
+
 		while (counter < num_length)
 		{
 			if (strcmp(instructions[counter].opcode, args.opcode) == 0)
 			{
 				instructions[counter].f(&stack, args.val);
+				break;
 			}
 			counter = counter + 1;
 		}
-		counter = 0;
 	}
 
 	fclose(file);
