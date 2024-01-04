@@ -3,14 +3,14 @@
 /**
  * initialise_line - Tokenizes a line into an args_t structure.
  *
- * @line: The input line to be tokenized.
- * @args: An array to store the tokenized arguments.
- * @max_args: The maximum number of arguments the array can hold.
+ * @line: The line to be tokenized.
+ * @args: A structure to store the tokenized arguments.
+ * @max_args: The maximum number of loop. now assumption is always 2.
  *
  * Description:
- * This function tokenizes the input line into separate arguments using
- * space as the delimiter. It populates the 'args' array with the tokenized
- * arguments and ensures proper null termination for exec call.
+ * This function tokenizes the line into separate arguments using
+ * space as the delimiter. It populates the 'args' structure with the tokenized
+ * arguments.
  */
 
 void initialise_line(char *line, args_t *args, int max_args)

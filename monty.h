@@ -46,11 +46,6 @@ typedef struct args
 void op_push(stack_type **stack, unsigned int line_number);
 void op_pall(stack_type **stack, unsigned int line_number);
 void initialise_line(char *line, args_t *args, int max_args);
-
-// instruction_t instructions[] = {
-// 	{"push", op_push},
-// 	{"pop", op_pall},
-// 	// Add other opcodes and their corresponding functions here
-// };
+void free_all_node(stack_type **stack);
 
 #endif

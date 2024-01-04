@@ -50,6 +50,6 @@ int main(int argc, char *argv[])
 	}
 
 	fclose(file);
-
+	free_all_node(&stack);
 	return EXIT_SUCCESS;
 }
