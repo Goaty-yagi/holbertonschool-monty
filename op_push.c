@@ -1,11 +1,11 @@
 #include "monty.h"
 #include <ctype.h>
 
-void op_push(stack_type **stack, unsigned int line_number, char *value)
+void op_push(stack_type **stack, unsigned int line_number)
 {
 	stack_type *new_node = malloc(sizeof(stack_type));
-	
-	if (!value || !isdigit(*value))
+
+	if (!line_number && line_number != 0)
 	{
 		fprintf(stderr, "L%d: usage: push integer\n", line_number);
 		exit(EXIT_FAILURE);
@@ -17,7 +17,7 @@ void op_push(stack_type **stack, unsigned int line_number, char *value)
 		exit(EXIT_FAILURE);
 	}
 
-	new_node->n = atoi(value);
+	new_node->n = line_number;
 	new_node->prev = NULL;
 	new_node->next = *stack;
 

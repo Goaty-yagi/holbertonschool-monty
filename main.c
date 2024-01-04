@@ -2,14 +2,25 @@
 #include <stdlib.h>
 #include "monty.h"
 
+
+/*void process_instructions()
+{
+	
+}
+*/
+
 int main(int argc, char *argv[])
 {
 	FILE *file = fopen(argv[1], "r");
 	stack_type *stack = NULL;
 	char line[256];
-	unsigned int line_number = 1;
-	char *opcode;
-	char *value;
+	args_t args;
+	unsigned int counter = 0;
+	instruction_t instructions[] = {
+		{"push", op_push},
+		{"pall", op_pall},
+	};
+	size_t num_length = sizeof(instructions) / sizeof(instructions[0]);
 
 	if (argc != 2)
 	{
@@ -25,21 +36,17 @@ int main(int argc, char *argv[])
 
 	while (fgets(line, sizeof(line), file))
 	{
-		line[strcspn(line, "\n")] = '\0'; // Remove newline if present
-
-		opcode = strtok(line, " ");
-		value = strtok(NULL, " ");
-
-		if (strcmp(opcode, "push") == 0)
+		line[strcspn(line, "\n")] = '\0'; /* Remove newline if present */
+		initialise_line(line, &args, 2);
+		while (counter < num_length)
 		{
-			op_push(&stack, line_number, value);
+			if (strcmp(instructions[counter].opcode, args.opcode) == 0)
+			{
+				instructions[counter].f(&stack, args.val);
+			}
+			counter = counter + 1;
 		}
-		else if (strcmp(opcode, "pall") == 0)
-		{
-			op_pall(&stack);
-		}
-
-		line_number++;
+		counter = 0;
 	}
 
 	fclose(file);
