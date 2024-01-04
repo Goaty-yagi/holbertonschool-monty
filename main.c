@@ -1,13 +1,21 @@
-#include <stdio.h>
-#include <stdlib.h>
 #include "monty.h"
 
-
-/*void process_instructions()
-{
-	
-}
-*/
+/**
+ * main - Entry point of the Monty interpreter
+ * @argc: Number of arguments passed to the program
+ * @argv: Array of pointers to the arguments
+ *
+ * This function serves as the entry point for the Monty interpreter. It reads
+ * a file containing Monty bytecode instructions, parses each line into opcode
+ * and value (if present), matches the opcode with predefined instructions, and
+ * executes the corresponding operation on the stack. It uses various helper
+ * functions such as 'initialise_line', 'free_all_node', and calls the
+ * appropriate operation functions based on the opcode found.
+ *
+ * Returns:
+ * - EXIT_SUCCESS upon successful execution.
+ * - EXIT_FAILURE if arguments are incorrect or if file opening fails.
+ */
 
 int main(int argc, char *argv[])
 {
@@ -15,10 +23,15 @@ int main(int argc, char *argv[])
 	stack_type *stack = NULL;
 	char line[256];
 	args_t args;
-	unsigned int counter = 0;
+	unsigned int counter;
 	instruction_t instructions[] = {
 		{"push", op_push},
 		{"pall", op_pall},
+		{"pint", op_pint},
+		{"pop", op_pop},
+		{"swap", op_swap},
+		{"add", op_add},
+		{"nop", op_nop},
 	};
 	size_t num_length = sizeof(instructions) / sizeof(instructions[0]);
 
@@ -38,15 +51,17 @@ int main(int argc, char *argv[])
 	{
 		line[strcspn(line, "\n")] = '\0'; /* Remove newline if present */
 		initialise_line(line, &args, 2);
+		counter = 0;
+
 		while (counter < num_length)
 		{
 			if (strcmp(instructions[counter].opcode, args.opcode) == 0)
 			{
 				instructions[counter].f(&stack, args.val);
+				break;
 			}
 			counter = counter + 1;
 		}
-		counter = 0;
 	}
 
 	fclose(file);
