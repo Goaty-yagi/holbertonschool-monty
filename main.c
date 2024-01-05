@@ -24,14 +24,11 @@ int main(int argc, char *argv[])
 	char line[256];
 	unsigned int counter = 0;
 	unsigned int line_number = 1;
-	char OPERATION[8];
-	char VALUE[128];
 	instruction_t instructions[] = {
 		{"push", op_push},
 		{"pall", op_pall},
 	};
 	size_t num_length = sizeof(instructions) / sizeof(instructions[0]);
-	(void)VALUE;
 
 	if (argc != 2)
 	{

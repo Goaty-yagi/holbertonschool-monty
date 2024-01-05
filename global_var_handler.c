@@ -1,5 +1,8 @@
 #include "monty.h"
 
+char OPERATION[8] = "default";
+char VALUE[128] = "initial";
+
 /**
  * initialise_line - Tokenizes a line into an args_t structure.
  *
@@ -30,7 +33,6 @@ void declare_global_var(char *line)
 		else
 		{
 			strcpy(VALUE, token);
-			printf("CECK_VAL:%s\n", VALUE);
 		}
 		token = strtok(NULL, " ");
 		arg_count = arg_count + 1;

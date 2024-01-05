@@ -36,4 +36,8 @@ void op_push(stack_type **stack, unsigned int line_number)
 		(*stack)->prev = new_node;
 
 	*stack = new_node;
+
+	strcpy(VALUE, "");
+	strcpy(OPERATION, "");
+
 }
