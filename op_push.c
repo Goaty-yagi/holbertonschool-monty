@@ -16,7 +16,7 @@ void op_push(stack_type **stack, unsigned int line_number)
 {
 	stack_type *new_node = malloc(sizeof(stack_type));
 
-	if (!line_number && line_number != 0)
+	if (!isdigit(VALUE[0]))
 	{
 		fprintf(stderr, "L%d: usage: push integer\n", line_number);
 		exit(EXIT_FAILURE);
@@ -28,7 +28,7 @@ void op_push(stack_type **stack, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 
-	new_node->n = line_number;
+	new_node->n = atoi(VALUE);
 	new_node->prev = NULL;
 	new_node->next = *stack;
 

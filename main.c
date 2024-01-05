@@ -22,13 +22,16 @@ int main(int argc, char *argv[])
 	FILE *file = fopen(argv[1], "r");
 	stack_type *stack = NULL;
 	char line[256];
-	args_t args;
 	unsigned int counter = 0;
+	unsigned int line_number = 1;
+	char OPERATION[8];
+	char VALUE[128];
 	instruction_t instructions[] = {
 		{"push", op_push},
 		{"pall", op_pall},
 	};
 	size_t num_length = sizeof(instructions) / sizeof(instructions[0]);
+	(void)VALUE;
 
 	if (argc != 2)
 	{
@@ -45,16 +48,17 @@ int main(int argc, char *argv[])
 	while (fgets(line, sizeof(line), file))
 	{
 		line[strcspn(line, "\n")] = '\0'; /* Remove newline if present */
-		initialise_line(line, &args, 2);
+		declare_global_var(line);
 		while (counter < num_length)
 		{
-			if (strcmp(instructions[counter].opcode, args.opcode) == 0)
+			if (strcmp(instructions[counter].opcode, OPERATION) == 0)
 			{
-				instructions[counter].f(&stack, args.val);
+				instructions[counter].f(&stack, line_number);
 			}
 			counter = counter + 1;
 		}
 		counter = 0;
+		line_number = line_number + 1;
 	}
 
 	fclose(file);

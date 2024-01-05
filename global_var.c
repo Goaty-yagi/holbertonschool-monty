@@ -13,7 +13,7 @@
  * arguments.
  */
 
-void initialise_line(char *line, args_t *args, int max_args)
+void declare_global_var(char *line)
 {
 	int arg_count = 0;
 	char *token;
@@ -21,15 +21,16 @@ void initialise_line(char *line, args_t *args, int max_args)
 	if (line == NULL)
 		return;
 	token = strtok(line, " ");
-	while (token != NULL && arg_count < max_args)
+	while (token != NULL && arg_count < 2)
 	{
 		if (arg_count == 0)
 		{
-			args->opcode = token;
+			strcpy(OPERATION, token);
 		}
 		else
 		{
-			args->val = atoi(token);
+			strcpy(VALUE, token);
+			printf("CECK_VAL:%s\n", VALUE);
 		}
 		token = strtok(NULL, " ");
 		arg_count = arg_count + 1;
