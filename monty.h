@@ -7,6 +7,7 @@
 #include <string.h>
 #include <ctype.h>
 
+extern FILE *READ_FILE;
 extern char OPERATION[];
 extern char VALUE[]; /* Assume that value is one char*/
 

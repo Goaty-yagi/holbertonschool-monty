@@ -1,5 +1,7 @@
 #include "monty.h"
 
+FILE *READ_FILE;
+
 /**
  * main - Entry point of the Monty interpreter
  * @argc: Number of arguments passed to the program
@@ -19,7 +21,6 @@
 
 int main(int argc, char *argv[])
 {
-	FILE *file = fopen(argv[1], "r");
 	stack_type *stack = NULL;
 	char line[256];
 	unsigned int counter = 0;
@@ -29,6 +30,7 @@ int main(int argc, char *argv[])
 		{"pall", op_pall},
 	};
 	size_t num_length = sizeof(instructions) / sizeof(instructions[0]);
+	READ_FILE = fopen(argv[1], "r");
 
 	if (argc != 2)
 	{
@@ -36,13 +38,13 @@ int main(int argc, char *argv[])
 		return EXIT_FAILURE;
 	}
 
-	if (!file)
+	if (!READ_FILE)
 	{
 		fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
 		return EXIT_FAILURE;
 	}
 
-	while (fgets(line, sizeof(line), file))
+	while (fgets(line, sizeof(line), READ_FILE))
 	{
 		line[strcspn(line, "\n")] = '\0'; /* Remove newline if present */
 		declare_global_var(line);
@@ -58,7 +60,7 @@ int main(int argc, char *argv[])
 		line_number = line_number + 1;
 	}
 
-	fclose(file);
+	fclose(READ_FILE);
 	free_all_node(&stack);
 	return EXIT_SUCCESS;
 }
