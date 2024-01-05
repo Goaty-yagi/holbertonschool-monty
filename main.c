@@ -31,13 +31,14 @@ int main(int argc, char *argv[])
 		{"pall", op_pall},
 	};
 	size_t num_length = sizeof(instructions) / sizeof(instructions[0]);
-	READ_FILE = fopen(argv[1], "r");
 
 	if (argc != 2)
 	{
 		fprintf(stderr, "USAGE: monty file\n");
 		return (EXIT_FAILURE);
 	}
+	
+	READ_FILE = fopen(argv[1], "r");
 
 	if (!READ_FILE)
 	{
@@ -49,7 +50,7 @@ int main(int argc, char *argv[])
 	{
 		line[strcspn(line, "\n")] = '\0'; /* Remove newline if present */
 		declare_global_var(line);
-		if (strcmp(OPERATION, "") != 0)
+		if (OPERATION[0] != '\0')
 		{
 			while (counter < num_length)
 			{
@@ -57,6 +58,7 @@ int main(int argc, char *argv[])
 				{
 					instructions[counter].f(&stack, line_number);
 					executed = 1;
+					break;
 				}
 				counter = counter + 1;
 			}
@@ -75,5 +77,5 @@ int main(int argc, char *argv[])
 
 	fclose(READ_FILE);
 	free_all_node(&stack);
-	return EXIT_SUCCESS;
+	return (EXIT_SUCCESS);
 }
