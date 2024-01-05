@@ -80,37 +80,37 @@ See, 2 and 3.
 
 Global variables are accessible from anywhere in your program, which can be convenient but also introduces some risks, like potential side effects and difficulties in tracking changes. If you need to use global variables, here are some best practices to consider:
 
-Minimize Global Variables:<br>
+- Minimize Global Variables:<br>
  Limit their Use: Minimize the number of global variables. If possible, use local variables or pass data through function parameters instead.
 
-Avoid Mutable Globals: <br>
+- Avoid Mutable Globals: <br>
  If a global variable must be used, consider making it immutable (constant). This reduces the risk of unintended changes.
 
-Naming Conventions:<br>
+- Naming Conventions:<br>
  Descriptive Names: Use descriptive names to clearly indicate the purpose of the global variable.
 
-Avoid Shadowing: <br>
+- Avoid Shadowing: <br>
  Avoid using the same name for a local variable and a global variable within the same scope to prevent confusion.
 
-Access and Modifying Global Variables:<br>
+- Access and Modifying Global Variables:<br>
  Avoid Direct Modification: Limit direct modification of global variables. Instead, use functions or methods to modify them. This helps maintain control and consistency.
 
-Encapsulation: <br>
+- Encapsulation: <br>
  When modifying global variables, encapsulate their access within functions or methods. This promotes better code organization and makes it easier to manage changes.
 
-Documentation and Comments:<br>
+- Documentation and Comments:<br>
  Document Usage: Clearly document the purpose, scope, and usage of global variables. This helps other developers understand their role and prevents misuse.
 
-Comment Changes: <br>
+- Comment Changes: <br>
  If a global variable is modified in multiple places, add comments to indicate why and where modifications occur.
 
-Use Cases for Global Variables:<br>
+- Use Cases for Global Variables:<br>
  Configuration Constants: Constants that do not change during program execution, such as configuration settings or constants, can be appropriate as global variables.
 
-Application State: <br>
+- Application State: <br>
  In some cases, managing application-wide state might involve global variables. However, consider alternative designs, like using singletons or state management patterns in such cases.
 
-Declaration and Definition: <br>
+- Declaration and Definition: <br>
  Declare global var in a header file with extern, but not define.
 ```c
 
@@ -145,21 +145,21 @@ int main() {
 - Preventing Multiple Definitions:<br> 
 If a variable is defined (allocated memory and initialized) in a header file and that header is included in multiple source files, each source file will have its own instance of that variable, which can lead to multiple definitions during linking and cause errors. Declaring it as extern in the header file informs the compiler that the variable is defined elsewhere, preventing multiple definitions.
 
-Sharing Global Variables:<br>
+- Sharing Global Variables:<br>
  When you declare a variable as extern in a header file, it serves as a reference to a global variable defined in a single source file. This allows multiple source files to access and use the same global variable without duplicating it.
 
-Modularity and Encapsulation:<br>
+- Modularity and Encapsulation:<br>
  Using extern helps in separating declaration from definition, promoting modularity and encapsulation. The header file only contains declarations (extern int myVariable;) while the actual definition (int myVariable = 42;) resides in a specific source file. This separation keeps the implementation details hidden from other parts of the program.
 
-Code Maintainability: <br>
+- Code Maintainability: <br>
 It makes the codebase more maintainable as changes to the variable's definition or type can be made in one place (the source file where it's defined) without affecting all files that include the header.
 
-Avoiding Unnecessary Memory Allocation:<br>
+- Avoiding Unnecessary Memory Allocation:<br>
  Global variables defined directly in header files would lead to unnecessary memory allocation in every source file that includes the header. Using extern avoids this issue by not allocating memory for the variable in each source file.
 
-Overall, using extern for variable declarations in header files promotes clean code, modularity, and prevents issues related to multiple definitions. It encourages better code organization and improves the maintainability of larger C projects.
+- Overall, using extern for variable declarations in header files promotes clean code, modularity, and prevents issues related to multiple definitions. It encourages better code organization and improves the maintainability of larger C projects.
 
-### Do I need global var as extern free?
+### Do I need to free global var as extern?
 
 No.
 
