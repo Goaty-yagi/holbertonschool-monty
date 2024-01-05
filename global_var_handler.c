@@ -1,7 +1,7 @@
 #include "monty.h"
 
-char OPERATION[8] = "default";
-char VALUE[128] = "initial";
+char OPERATION[16];
+char VALUE[16];
 
 /**
  * initialise_line - Tokenizes a line into an args_t structure.

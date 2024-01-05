@@ -19,12 +19,14 @@ void op_push(stack_type **stack, unsigned int line_number)
 	if (!isdigit(VALUE[0]))
 	{
 		fprintf(stderr, "L%d: usage: push integer\n", line_number);
+		free_all_node(stack);
 		exit(EXIT_FAILURE);
 	}
 
 	if (!new_node)
 	{
 		fprintf(stderr, "Error: malloc failed\n");
+		free_all_node(stack);
 		exit(EXIT_FAILURE);
 	}
 
