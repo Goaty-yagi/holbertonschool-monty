@@ -37,7 +37,7 @@ int main(int argc, char *argv[])
 		fprintf(stderr, "USAGE: monty file\n");
 		return (EXIT_FAILURE);
 	}
-	
+
 	READ_FILE = fopen(argv[1], "r");
 
 	if (!READ_FILE)
@@ -49,7 +49,7 @@ int main(int argc, char *argv[])
 	while (fgets(line, sizeof(line), READ_FILE))
 	{
 		line[strcspn(line, "\n")] = '\0'; /* Remove newline if present */
-		declare_global_var(line);
+		define_global_var(line);
 		if (OPERATION[0] != '\0')
 		{
 			while (counter < num_length)

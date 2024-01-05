@@ -43,7 +43,7 @@ typedef struct instruction_s
 
 void op_push(stack_type **stack, unsigned int line_number);
 void op_pall(stack_type **stack, unsigned int line_number);
-void declare_global_var(char *line);
+void define_global_var(char *line);
 void free_all_node(stack_type **stack);
 
 #endif

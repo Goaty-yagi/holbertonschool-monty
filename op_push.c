@@ -1,5 +1,22 @@
 #include "monty.h"
 
+
+int isAllDigit(char *str)
+{
+	int len = strlen(str);
+	int counter = 0;
+
+	while (counter < len)
+	{
+		if (!isdigit(str[counter]))
+		{
+			return (0);
+		}
+		counter = counter + 1;
+	}
+	return (1);
+}
+
 /**
  * op_push - Adds a new element to the top of the stack
  * @stack: Pointer to a pointer to the top of the stack
@@ -16,7 +33,7 @@ void op_push(stack_type **stack, unsigned int line_number)
 {
 	stack_type *new_node = malloc(sizeof(stack_type));
 
-	if (!isdigit(VALUE[0]))
+	if (!isAllDigit(VALUE) || VALUE[0] == '\0')
 	{
 		fprintf(stderr, "L%d: usage: push integer\n", line_number);
 		free_all_node(stack);

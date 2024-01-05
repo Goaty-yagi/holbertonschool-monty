@@ -4,19 +4,16 @@ char OPERATION[16];
 char VALUE[16];
 
 /**
- * initialise_line - Tokenizes a line into an args_t structure.
+ * define_global_var - Tokenizes a line into an args_t structure.
  *
  * @line: The line to be tokenized.
- * @args: A structure to store the tokenized arguments.
- * @max_args: The maximum number of loop. now assumption is always 2.
  *
  * Description:
  * This function tokenizes the line into separate arguments using
- * space as the delimiter. It populates the 'args' structure with the tokenized
- * arguments.
+ * space as the delimiter.
  */
 
-void declare_global_var(char *line)
+void define_global_var(char *line)
 {
 	int arg_count = 0;
 	char *token;
