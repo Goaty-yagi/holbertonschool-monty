@@ -24,6 +24,7 @@ int main(int argc, char *argv[])
 	stack_type *stack = NULL;
 	char line[256];
 	unsigned int counter = 0;
+	unsigned int executed = 0;
 	unsigned int line_number = 1;
 	instruction_t instructions[] = {
 		{"push", op_push},
@@ -35,32 +36,45 @@ int main(int argc, char *argv[])
 	if (argc != 2)
 	{
 		fprintf(stderr, "USAGE: monty file\n");
-		return EXIT_FAILURE;
+		return (EXIT_FAILURE);
 	}
 
 	if (!READ_FILE)
 	{
 		fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
-		return EXIT_FAILURE;
+		return (EXIT_FAILURE);
 	}
 
 	while (fgets(line, sizeof(line), READ_FILE))
 	{
 		line[strcspn(line, "\n")] = '\0'; /* Remove newline if present */
 		declare_global_var(line);
-		while (counter < num_length)
+
+		if (strcmp(OPERATION, "") != 0)
 		{
-			if (strcmp(instructions[counter].opcode, OPERATION) == 0)
+			while (counter < num_length)
 			{
-				instructions[counter].f(&stack, line_number);
+				if (strcmp(instructions[counter].opcode, OPERATION) == 0)
+				{
+					instructions[counter].f(&stack, line_number);
+					executed = 1;
+				}
+				counter = counter + 1;
 			}
-			counter = counter + 1;
+			if (!executed)
+			{
+				fprintf(stderr, "L%i: unknown instruction %s\n", line_number, OPERATION);
+				fclose(READ_FILE);
+				free_all_node(&stack);
+				return (EXIT_FAILURE);
+			}
+			counter = 0;
+			executed = 0;
+			line_number = line_number + 1;
 		}
-		counter = 0;
-		line_number = line_number + 1;
 	}
 
 	fclose(READ_FILE);
 	free_all_node(&stack);
-	return EXIT_SUCCESS;
+	return (EXIT_SUCCESS);
 }
