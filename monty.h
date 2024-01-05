@@ -9,7 +9,7 @@
 
 extern FILE *READ_FILE;
 extern char OPERATION[];
-extern char VALUE[]; /* Assume that value is one char*/
+extern char VALUE[];
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
