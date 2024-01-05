@@ -7,6 +7,10 @@
 #include <string.h>
 #include <ctype.h>
 
+extern FILE *READ_FILE;
+extern char OPERATION[];
+extern char VALUE[]; /* Assume that value is one char*/
+
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
@@ -37,15 +41,9 @@ typedef struct instruction_s
 	void (*f)(stack_type **stack, unsigned int line_number);
 } instruction_t;
 
-typedef struct args
-{
-	char *opcode;
-	int val;
-} args_t;
-
 void op_push(stack_type **stack, unsigned int line_number);
 void op_pall(stack_type **stack, unsigned int line_number);
-void initialise_line(char *line, args_t *args, int max_args);
+void declare_global_var(char *line);
 void free_all_node(stack_type **stack);
 
 #endif
