@@ -1,7 +1,7 @@
 #include "monty.h"
 
-char OPERATION[16];
-char VALUE[16];
+char OPERATION[1028];
+char VALUE[1028];
 
 /**
  * define_global_var - Tokenizes a line into an args_t structure.

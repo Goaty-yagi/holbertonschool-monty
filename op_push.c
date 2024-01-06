@@ -11,7 +11,7 @@ int isAllDigit(char *str)
 		if (!isdigit(str[counter]))
 		{
 			return (0);
-		}
+		} 
 		counter = counter + 1;
 	}
 	return (1);
@@ -36,7 +36,6 @@ void op_push(stack_type **stack, unsigned int line_number)
 	if (!isAllDigit(VALUE) || VALUE[0] == '\0')
 	{
 		fprintf(stderr, "L%d: usage: push integer\n", line_number);
-		free_all_node(stack);
 		free(new_node);
 		fclose(READ_FILE);
 		exit(EXIT_FAILURE);
