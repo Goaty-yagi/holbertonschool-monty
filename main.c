@@ -62,6 +62,12 @@ int main(int argc, char *argv[])
 				}
 				counter = counter + 1;
 			}
+			if (ferror(READ_FILE))
+			{
+				fclose(READ_FILE);
+				free_all_node(&stack);
+				return (EXIT_FAILURE);
+			}
 			if (!executed)
 			{
 				fprintf(stderr, "L%i: unknown instruction %s\n", line_number, OPERATION);

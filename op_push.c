@@ -33,18 +33,18 @@ void op_push(stack_type **stack, unsigned int line_number)
 {
 	stack_type *new_node = malloc(sizeof(stack_type));
 
-	if (!isAllDigit(VALUE) || VALUE[0] == '\0')
-	{
-		fprintf(stderr, "L%d: usage: push integer\n", line_number);
-		free(new_node);
-		fclose(READ_FILE);
-		exit(EXIT_FAILURE);
-	}
-
 	if (!new_node)
 	{
 		fprintf(stderr, "Error: malloc failed\n");
 		free_all_node(stack);
+		fclose(READ_FILE);
+		exit(EXIT_FAILURE);
+	}
+	
+	if (!isAllDigit(VALUE) || VALUE[0] == '\0')
+	{
+		fprintf(stderr, "L%d: usage: push integer\n", line_number);
+		free(new_node);
 		fclose(READ_FILE);
 		exit(EXIT_FAILURE);
 	}
