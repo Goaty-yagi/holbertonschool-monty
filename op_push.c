@@ -1,17 +1,23 @@
 #include "monty.h"
 
-
-int isAllDigit(char *str)
+int parse_input(char *str)
 {
 	int len = strlen(str);
 	int counter = 0;
+	char *temp = str;
 
 	while (counter < len)
 	{
-		if (!isdigit(str[counter]))
+		if (!isdigit(*str++))
 		{
-			return (0);
-		} 
+			if (counter == 0)
+			{
+				return (0);
+			}
+			*str = '\0';
+			*str = *temp;
+			return (1);
+		}
 		counter = counter + 1;
 	}
 	return (1);
@@ -31,20 +37,21 @@ int isAllDigit(char *str)
 
 void op_push(stack_type **stack, unsigned int line_number)
 {
-	stack_type *new_node = malloc(sizeof(stack_type));
+	stack_type *new_node;
 
-	if (!new_node)
+	if (!parse_input(VALUE) || VALUE[0] == '\0')
 	{
-		fprintf(stderr, "Error: malloc failed\n");
+		fprintf(stderr, "L%d: usage: push integer\n", line_number);
 		free_all_node(stack);
 		fclose(READ_FILE);
 		exit(EXIT_FAILURE);
 	}
-	
-	if (!isAllDigit(VALUE) || VALUE[0] == '\0')
+
+	new_node = malloc(sizeof(stack_type));
+	if (!new_node)
 	{
-		fprintf(stderr, "L%d: usage: push integer\n", line_number);
-		free(new_node);
+		fprintf(stderr, "Error: malloc failed\n");
+		free_all_node(stack);
 		fclose(READ_FILE);
 		exit(EXIT_FAILURE);
 	}
@@ -60,5 +67,4 @@ void op_push(stack_type **stack, unsigned int line_number)
 
 	strcpy(VALUE, "");
 	strcpy(OPERATION, "");
-
 }
