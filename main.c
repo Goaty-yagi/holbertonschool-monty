@@ -67,7 +67,6 @@ void process_file_operations(stack_type **stack)
 int main(int argc, char *argv[])
 {
 	stack_type *stack = NULL;
-	// int exit_code;
 
 	if (argc != 2)
 	{
