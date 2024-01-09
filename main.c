@@ -6,7 +6,7 @@ struct file_operation file_s = {NULL, "", ""};
  * process_file_operations - Process operations and execute instructions
  * @stack: Pointer to the stack structure
  *
- * This function reads lines from a file, parses each line, 
+ * This function reads lines from a file, parses each line,
  * and executes corresponding
  * instructions based on the defined operations.
  *
@@ -14,7 +14,7 @@ struct file_operation file_s = {NULL, "", ""};
 void process_file_operations(stack_type **stack)
 {
 	char line[256];
-	unsigned int counter = 0, executed = 0, line_number = 1;
+	unsigned int counter = 0, executed = 0, line_num = 1;
 	instruction_t instructions[] = {
 		{"push", op_push},
 		{"pall", op_pall}};
@@ -30,7 +30,7 @@ void process_file_operations(stack_type **stack)
 			{
 				if (strcmp(instructions[counter].opcode, file_s.OPERATION) == 0)
 				{
-					instructions[counter].f(stack, line_number);
+					instructions[counter].f(stack, line_num);
 					executed = 1;
 					break;
 				}
@@ -38,30 +38,31 @@ void process_file_operations(stack_type **stack)
 			}
 			if (!executed)
 			{
-				fprintf(stderr, "L%i: unknown instruction %s\n", line_number, file_s.OPERATION);
+				fprintf(stderr, "L%i: unknown instruction %s\n", line_num, file_s.OPERATION);
 				free_all_node(stack);
 				exit(EXIT_FAILURE);
 			}
 			counter = 0;
 			executed = 0;
-			line_number++;
+			line_num++;
 		}
 	}
 }
 
 /**
  * main - Entry point of the Monty interpreter
- * @argc: Number of arguments passed
- * @argv: Pointers to the arguments
+ * @argc: Number of arguments passed to the program
+ * @argv: Array of pointers to the arguments
  *
- * This function is the entry point for the Monty interpreter. It reads a file
- * with Monty bytecode instructions, parses each line into opcode and value (if
- * present), matches with predefined instructions, and executes file_s.operation
- * on the stack. It uses helper functions like 'initialise_line', 'free_all_node',
- * and calls appropriate file_s.operation functions based on the opcode found.
+ * This function serves as the entry point for the Monty interpreter. It reads
+ * a file containing Monty bytecode instructions, parses each line into opcode
+ * and value (if present), matches the opcode with predefined instructions,
+ * and executes the corresponding file_s.operation on the stack. It uses various
+ * helper functions such as 'initialise_line', 'free_all_node', and calls the
+ * appropriate file_s.operation functions based on the opcode found.
  *
- * Return: EXIT_SUCCESS on successful execution, EXIT_FAILURE for incorrect arguments
- * or file opening failure.
+ * Return: EXIT_SUCCESS upon successful execution, EXIT_FAILURE if arguments
+ * are incorrect or if file opening fails.
  */
 
 
