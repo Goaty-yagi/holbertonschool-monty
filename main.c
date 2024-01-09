@@ -24,11 +24,11 @@ void process_file_operations(stack_type **stack)
 	{
 		line[strcspn(line, "\n")] = '\0';
 		define_global_var(line);
-		if (file_s.OPERATION[0] != '\0')
+		if (file_s.OP[0] != '\0')
 		{
 			while (counter < num_length)
 			{
-				if (strcmp(instructions[counter].opcode, file_s.OPERATION) == 0)
+				if (strcmp(instructions[counter].opcode, file_s.OP) == 0)
 				{
 					instructions[counter].f(stack, line_num);
 					executed = 1;
@@ -38,7 +38,7 @@ void process_file_operations(stack_type **stack)
 			}
 			if (!executed)
 			{
-				fprintf(stderr, "L%i: unknown instruction %s\n", line_num, file_s.OPERATION);
+				fprintf(stderr, "L%i: unknown instruction %s\n", line_num, file_s.OP);
 				free_all_node(stack);
 				exit(EXIT_FAILURE);
 			}
@@ -57,9 +57,9 @@ void process_file_operations(stack_type **stack)
  * This function serves as the entry point for the Monty interpreter. It reads
  * a file containing Monty bytecode instructions, parses each line into opcode
  * and value (if present), matches the opcode with predefined instructions,
- * and executes the corresponding file_s.operation on the stack. It uses various
+ * and executes the corresponding file_s.op on the stack. It uses various
  * helper functions such as 'initialise_line', 'free_all_node', and calls the
- * appropriate file_s.operation functions based on the opcode found.
+ * appropriate file_s.op functions based on the opcode found.
  *
  * Return: EXIT_SUCCESS upon successful execution, EXIT_FAILURE if arguments
  * are incorrect or if file opening fails.

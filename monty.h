@@ -7,10 +7,6 @@
 #include <string.h>
 #include <ctype.h>
 
-extern FILE *READ_FILE;
-extern char OPERATION[];
-extern char VALUE[];
-
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
@@ -43,7 +39,7 @@ typedef struct instruction_s
 
 struct file_operation {
     FILE *READ_FILE;
-    char OPERATION[256];
+    char OP[256];
     char VALUE[256];
 };
 

@@ -73,5 +73,5 @@ void op_push(stack_type **stack, unsigned int line_number)
 	*stack = new_node;
 
 	strcpy(file_s.VALUE, "");
-	strcpy(file_s.OPERATION, "");
+	strcpy(file_s.OP, "");
 }

@@ -22,7 +22,7 @@ void define_global_var(char *line)
 	{
 		if (arg_count == 0)
 		{
-			strcpy(file_s.OPERATION, token);
+			strcpy(file_s.OP, token);
 		}
 		else
 		{
