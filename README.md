@@ -4,14 +4,21 @@ This project implements an interpreter for Monty ByteCodes files. Monty ByteCode
 
 ## Table of Contents :world_map:
 
+- [Overview](#overview)
 - [Description](#description)
 - [Flowchart](#flowchart)
-- [Installation & Example](#installation)
+- [Installation&Example](#installation&example)
+- [ExpectedError](#expectederrors)
 - [Authors](#authors)
 - [Bugs](#bugs)
 - [Contributing](#contributing)
 - [License](#license)
 - [Acknowledgements](#acknowledgements)
+
+## Overview
+The interpreter is designed to read Monty ByteCodes files, parse their instructions, and execute them accordingly. It functions by following the instructions encoded within the bytecode file, performing operations specified by the bytecode commands.
+
+
 
 ## Description :bellhop_bell:
 
@@ -21,14 +28,14 @@ The interpreter is designed to read Monty ByteCodes files, parse their instructi
 
 ```
 - Ubuntu 20.04
-- gcc version 9.4.0
-- git version 2.25.1
+- gcc 9.4.0
+- git 2.25.1
 - GNU Make 4.2.1 
 ```
 
 ## Flowchart :chart:
 
-Below is a flowchart showing the basic implementation of how our hsh shell works.
+Below is a flowchart showing the basic implementation of how our Monty Interpreter works.
 
 ![flowchart](https://github.com/WarrenTheRabbit/holbertonschool-simple_shell/blob/main/flowchart.png)
 
@@ -36,7 +43,11 @@ Below is a flowchart showing the basic implementation of how our hsh shell works
 
 ## Features
 
-| **Function** | **Action**                    |
+- ByteCode Parsing: The interpreter parses Monty ByteCodes files, translating the instructions into executable operations.
+- Execution: It executes the instructions step-by-step, carrying out the specified operations.
+- Stack Operations: Handles stack-based operations as defined by the Monty ByteCodes language.
+
+| **Operation** | **Description**                    |
 | ------------- | ----------------------------- |
 | push           | Adds an element to the stack.|
 | pall           | Prints all the values on the stack, starting from the top. |
@@ -62,7 +73,7 @@ Execute: Run the interpreter, providing the Monty ByteCodes file as an argument.
 $ ./monty bytecodes/00.m
 ```
 
-## Installation & Example :electric_plug:
+## Installation&Example :electric_plug:
 
 First, clone this repository to your local machine:
 
@@ -123,6 +134,29 @@ julien@ubuntu:~/monty$ ./monty bytecodes/your_monty.m
 20
 ```
 You might need to make you file executable with `chmod +x bytecodes/your_monty.m` (if necessary)
+
+## ExpectedErrors
+While using this software, users may encounter specific known issues or errors. Here are a few examples:
+
+- `USAGE: monty file`: If the user does not give any file or more than one argument to your program.
+
+- `Error: Can't open file <file>`: If, for any reason, it’s not possible to open the file.
+
+- `L<line_number>: unknown instruction <opcode>`: If the file contains an invalid instruction.
+
+- `Error: malloc failed`: If you can’t malloc anymore.
+
+- `L<line_number>: usage: push integer`: if <int> is not an integer or if there is no argument given to push.
+
+- `L<line_number>: can't pint, stack empty`: If the stack is empty with pint operation.
+
+- `L<line_number>: can't pop an empty stack`: If the stack is empty with pop operation.
+
+- `L<line_number>: can't swap, stack too short`: If the stack contains less than two elements with swap operation.
+
+- `L<line_number>: can't add, stack too short`: If the stack contains less than two elements with add operation.
+
+
 ## Authors :selfie:
 
 - Warren Markham https://github.com/WarrenTheRabbit
@@ -142,4 +176,4 @@ This project is released under the MIT License
 
 ## Acknowledgements :triangular_ruler:
 
-This project was developed as part of the curriculum for [Holberton School](https://www.holbertonschool.com/), a campus-based full-stack software engineering program. We would like to acknowledge the guidance and support received from our peers and mentors during the development of this Simple Shell project.
+This project was developed as part of the curriculum for [Holberton School](https://www.holbertonschool.com/), a campus-based full-stack software engineering program. We would like to acknowledge the guidance and support received from our peers and mentors during the development of this Monty Interpreter project.
