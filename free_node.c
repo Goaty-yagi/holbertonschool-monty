@@ -11,19 +11,20 @@
 
 void free_all_node(stack_type **stack)
 {
-    stack_type *current = stack[0];
-    stack_type *next_node = NULL;
+	stack_type *current = stack[0];
+	stack_type *next_node = NULL;
 
-    if (!current)
-        return;
+	if (!current)
+		return;
 
-    while (current != NULL) {
-        next_node = current->next;
+	while (current != NULL)
+	{
+		next_node = current->next;
 
-        free(current);
+		free(current);
 
-        current = next_node;
-    }
+		current = next_node;
+	}
 
-    *stack = NULL;
+	*stack = NULL;
 }

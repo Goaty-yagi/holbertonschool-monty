@@ -1,5 +1,12 @@
 #include "monty.h"
 
+/**
+ * parse_input - Parses the input string
+ * @str: The input string to parse
+ *
+ * Return: 0 if the string doesn't start with a digit, 1 otherwise
+ */
+
 int parse_input(char *str)
 {
 	int len = strlen(str);
