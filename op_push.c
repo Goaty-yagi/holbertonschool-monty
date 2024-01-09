@@ -36,7 +36,7 @@ int parse_input(char *str)
  * @line_number: Line number in the file being processed
  *
  * This function creates a new node and adds it to the top of the stack.
- * It assigns the given line_number as the value of the new node. If the
+ * It assigns the given line_number as the file_s.value of the new node. If the
  * allocation fails or if the line_number is invalid, it displays an error
  * message and exits with a failure status. The new node becomes the top
  * element of the stack.
@@ -46,11 +46,11 @@ void op_push(stack_type **stack, unsigned int line_number)
 {
 	stack_type *new_node;
 
-	if (!parse_input(VALUE) || VALUE[0] == '\0')
+	if (!parse_input(file_s.VALUE) || file_s.VALUE[0] == '\0')
 	{
 		fprintf(stderr, "L%d: usage: push integer\n", line_number);
 		free_all_node(stack);
-		fclose(READ_FILE);
+		fclose(file_s.READ_FILE);
 		exit(EXIT_FAILURE);
 	}
 
@@ -59,11 +59,11 @@ void op_push(stack_type **stack, unsigned int line_number)
 	{
 		fprintf(stderr, "Error: malloc failed\n");
 		free_all_node(stack);
-		fclose(READ_FILE);
+		fclose(file_s.READ_FILE);
 		exit(EXIT_FAILURE);
 	}
 
-	new_node->n = atoi(VALUE);
+	new_node->n = atoi(file_s.VALUE);
 	new_node->prev = NULL;
 	new_node->next = *stack;
 
@@ -72,6 +72,6 @@ void op_push(stack_type **stack, unsigned int line_number)
 
 	*stack = new_node;
 
-	strcpy(VALUE, "");
-	strcpy(OPERATION, "");
+	strcpy(file_s.VALUE, "");
+	strcpy(file_s.OPERATION, "");
 }

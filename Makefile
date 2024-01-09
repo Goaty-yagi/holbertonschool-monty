@@ -21,4 +21,4 @@ memory:
 	$(VALG) $(VFLAGS) $(NAME)
 
 betty:
-	$(BT) $(NAME)
+	$(BT) $(SRC)

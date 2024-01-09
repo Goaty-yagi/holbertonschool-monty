@@ -27,4 +27,5 @@ void free_all_node(stack_type **stack)
 	}
 
 	*stack = NULL;
+	fclose(file_s.READ_FILE);
 }

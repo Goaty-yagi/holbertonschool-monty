@@ -41,6 +41,15 @@ typedef struct instruction_s
 	void (*f)(stack_type **stack, unsigned int line_number);
 } instruction_t;
 
+struct file_operation {
+    FILE *READ_FILE;
+    char OPERATION[256];
+    char VALUE[256];
+};
+
+extern struct file_operation file_s;
+
+
 void op_push(stack_type **stack, unsigned int line_number);
 void op_pall(stack_type **stack, unsigned int line_number);
 void define_global_var(char *line);

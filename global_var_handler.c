@@ -1,8 +1,5 @@
 #include "monty.h"
 
-char OPERATION[1028];
-char VALUE[1028];
-
 /**
  * define_global_var - Tokenizes a line into an args_t structure.
  *
@@ -25,11 +22,11 @@ void define_global_var(char *line)
 	{
 		if (arg_count == 0)
 		{
-			strcpy(OPERATION, token);
+			strcpy(file_s.OPERATION, token);
 		}
 		else
 		{
-			strcpy(VALUE, token);
+			strcpy(file_s.VALUE, token);
 		}
 		token = strtok(NULL, " ");
 		arg_count = arg_count + 1;
