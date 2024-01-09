@@ -3,10 +3,11 @@
 struct file_operation file_s = {NULL, "", ""};
 
 /**
- * process_file_operations - Process operations from a file and execute corresponding instructions
+ * process_file_operations - Process operations and execute instructions
  * @stack: Pointer to the stack structure
  *
- * This function reads lines from a file, parses each line, and executes corresponding
+ * This function reads lines from a file, parses each line, 
+ * and executes corresponding
  * instructions based on the defined operations.
  *
  */
@@ -50,19 +51,19 @@ void process_file_operations(stack_type **stack)
 
 /**
  * main - Entry point of the Monty interpreter
- * @argc: Number of arguments passed to the program
- * @argv: Array of pointers to the arguments
+ * @argc: Number of arguments passed
+ * @argv: Pointers to the arguments
  *
- * This function serves as the entry point for the Monty interpreter. It reads
- * a file containing Monty bytecode instructions, parses each line into opcode
- * and value (if present), matches the opcode with predefined instructions, and
- * executes the corresponding file_s.operation on the stack. It uses various helper
- * functions such as 'initialise_line', 'free_all_node', and calls the
- * appropriate file_s.operation functions based on the opcode found.
+ * This function is the entry point for the Monty interpreter. It reads a file
+ * with Monty bytecode instructions, parses each line into opcode and value (if
+ * present), matches with predefined instructions, and executes file_s.operation
+ * on the stack. It uses helper functions like 'initialise_line', 'free_all_node',
+ * and calls appropriate file_s.operation functions based on the opcode found.
  *
- * Return: EXIT_SUCCESS upon successful execution while
- * EXIT_FAILURE if arguments are incorrect or if file opening fails.
+ * Return: EXIT_SUCCESS on successful execution, EXIT_FAILURE for incorrect arguments
+ * or file opening failure.
  */
+
 
 int main(int argc, char *argv[])
 {
