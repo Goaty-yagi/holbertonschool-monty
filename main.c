@@ -20,7 +20,8 @@ void process_file_operations(stack_type **stack)
 		{"pall", op_pall},
 		{"pint", op_pint},
 		{"pop", op_pop},
-		{"swap", op_swap}};
+		{"swap", op_swap},
+		{"add", op_add}};
 	size_t num_length = sizeof(instructions) / sizeof(instructions[0]);
 
 	while (fgets(line, sizeof(line), file_s.READ_FILE))
