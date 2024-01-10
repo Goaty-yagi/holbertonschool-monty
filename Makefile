@@ -4,15 +4,16 @@ OBJ = $(SRC:%.c=%.o)
 NAME = monty
 RM = rm
 CFLAGS = -Wall -pedantic -Werror -Wextra -std=gnu89
-VALG = valgrind
-VFLAGS = --leak-check=full --show-leak-kinds=all --track-origins=yes
+
+VALGRIND = valgrind
+V_FLAGS = --leak-check=full --show-leak-kinds=all --track-origins=yes
+
 BT = betty
-BYTECODE0 = bytecodes/00.m
-BYTECODE1-0 = bytecodes/task1/00.m
-BYTECODE1-1 = bytecodes/task1/01.m
-BYTECODE2-0 = bytecodes/task2/00.m
-BYTECODE2-1 = bytecodes/task2/01.m
-BYTECODE2-2 = bytecodes/task2/02.m
+HEADER = $(wildcard *.h)
+
+BYTECODES_DIR = bytecodes
+BYTECODES_TASK1 = $(wildcard $(BYTECODES_DIR)/task1/*.m)
+BYTECODES_TASK2 = $(wildcard $(BYTECODES_DIR)/task2/*.m)
 
 all:$(OBJ)
 	$(CC) $(OBJ) -o $(NAME)
@@ -24,22 +25,10 @@ clean:
 	$(RM) -rf *~ $(NAME) $(OBJ)
 
 betty:
-	$(BT) $(SRC)
+	$(BT) $(SRC) $(HEADER)
 
-memory:
-	$(VALG) $(VFLAGS) ./$(NAME) $(BYTECODE0)
+memory-task1: $(NAME)
+	$(VALGRIND) $(V_FLAGS) ./$(NAME) $(BYTECODES_TASK1)
 
-memory1-0:
-	$(VALG) $(VFLAGS) ./$(NAME) $(BYTECODE1-0)
-
-memory1-1:
-	$(VALG) $(VFLAGS) ./$(NAME) $(BYTECODE1-1)
-
-memory2-0:
-	$(VALG) $(VFLAGS) ./$(NAME) $(BYTECODE2-0)
-
-memory2-1:
-	$(VALG) $(VFLAGS) ./$(NAME) $(BYTECODE2-1)
-
-memory2-2:
-	$(VALG) $(VFLAGS) ./$(NAME) $(BYTECODE2-2)
+memory-task2: $(NAME)
+	$(VALGRIND) $(V_FLAGS) ./$(NAME) $(BYTECODES_TASK2)
