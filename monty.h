@@ -37,14 +37,23 @@ typedef struct instruction_s
 	void (*f)(stack_type **stack, unsigned int line_number);
 } instruction_t;
 
-struct file_operation {
-    FILE *READ_FILE;
-    char OP[256];
-    char VALUE[256];
+/**
+ * struct file_operation - File operations structure
+ * @READ_FILE: Pointer to a FILE structure for reading operations
+ * @OP: Operation, command, or action
+ * @VALUE: Value related to the operation
+ *
+ * Description: Structure defining file operations, including
+ * reading from a file, the operation/command, and associated value.
+ */
+struct file_operation
+{
+	FILE *READ_FILE;
+	char OP[256];
+	char VALUE[256];
 };
 
 extern struct file_operation file_s;
-
 
 void op_push(stack_type **stack, unsigned int line_number);
 void op_pall(stack_type **stack, unsigned int line_number);
