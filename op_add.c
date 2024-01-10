@@ -27,7 +27,7 @@ void op_add(stack_type **stack, unsigned int line_number)
 
 	if ((*stack)->next)
 	{
-		(*stack)->next->prev = *stack; // Update the new top's prev pointer
+		(*stack)->next->prev = *stack;
 	}
 	free(temp);
 }
