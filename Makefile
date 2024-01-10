@@ -10,6 +10,9 @@ BT = betty
 BYTECODE0 = bytecodes/00.m
 BYTECODE1-0 = bytecodes/task1/00.m
 BYTECODE1-1 = bytecodes/task1/01.m
+BYTECODE2-0 = bytecodes/task2/00.m
+BYTECODE2-1 = bytecodes/task2/01.m
+BYTECODE2-2 = bytecodes/task2/02.m
 
 all:$(OBJ)
 	$(CC) $(OBJ) -o $(NAME)
@@ -31,3 +34,12 @@ memory1-0:
 
 memory1-1:
 	$(VALG) $(VFLAGS) ./$(NAME) $(BYTECODE1-1)
+
+memory2-0:
+	$(VALG) $(VFLAGS) ./$(NAME) $(BYTECODE2-0)
+
+memory2-1:
+	$(VALG) $(VFLAGS) ./$(NAME) $(BYTECODE2-1)
+
+memory2-2:
+	$(VALG) $(VFLAGS) ./$(NAME) $(BYTECODE2-2)
