@@ -18,7 +18,7 @@ clean:
 	$(RM) -rf *~ $(NAME) $(OBJ)
 
 memory:
-	$(VALG) $(VFLAGS) $(NAME)
+	$(VALG) $(VFLAGS) ./$(NAME)
 
 betty:
 	$(BT) $(SRC)

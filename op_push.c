@@ -50,7 +50,6 @@ void op_push(stack_type **stack, unsigned int line_number)
 	{
 		fprintf(stderr, "L%d: usage: push integer\n", line_number);
 		free_all_node(stack);
-		fclose(file_s.READ_FILE);
 		exit(EXIT_FAILURE);
 	}
 
@@ -59,7 +58,6 @@ void op_push(stack_type **stack, unsigned int line_number)
 	{
 		fprintf(stderr, "Error: malloc failed\n");
 		free_all_node(stack);
-		fclose(file_s.READ_FILE);
 		exit(EXIT_FAILURE);
 	}
 
