@@ -15,7 +15,10 @@ void free_all_node(stack_type **stack)
 	stack_type *next_node = NULL;
 
 	if (!current)
+	{
+		fclose(file_s.READ_FILE);
 		return;
+	}
 
 	while (current != NULL)
 	{
