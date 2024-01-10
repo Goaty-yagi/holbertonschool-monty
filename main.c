@@ -17,7 +17,8 @@ void process_file_operations(stack_type **stack)
 	unsigned int counter = 0, executed = 0, line_num = 1;
 	instruction_t instructions[] = {
 		{"push", op_push},
-		{"pall", op_pall}};
+		{"pall", op_pall},
+		{"pint", op_pint}};
 	size_t num_length = sizeof(instructions) / sizeof(instructions[0]);
 
 	while (fgets(line, sizeof(line), file_s.READ_FILE))
