@@ -14,6 +14,7 @@ HEADER = $(wildcard *.h)
 BYTECODES_DIR = bytecodes
 BYTECODES_TASK1 = $(wildcard $(BYTECODES_DIR)/task1/*.m)
 BYTECODES_TASK2 = $(wildcard $(BYTECODES_DIR)/task2/*.m)
+BYTECODES_TASK3 = $(wildcard $(BYTECODES_DIR)/task3/*.m)
 
 all:$(OBJ)
 	$(CC) $(OBJ) -o $(NAME)
@@ -32,3 +33,6 @@ memory-task1: $(NAME)
 
 memory-task2: $(NAME)
 	$(VALGRIND) $(V_FLAGS) ./$(NAME) $(BYTECODES_TASK2)
+
+memory-task3: $(NAME)
+	$(VALGRIND) $(V_FLAGS) ./$(NAME) $(BYTECODES_TASK3)

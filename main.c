@@ -19,7 +19,8 @@ void process_file_operations(stack_type **stack)
 		{"push", op_push},
 		{"pall", op_pall},
 		{"pint", op_pint},
-		{"pop", op_pop}};
+		{"pop", op_pop},
+		{"swap", op_swap}};
 	size_t num_length = sizeof(instructions) / sizeof(instructions[0]);
 
 	while (fgets(line, sizeof(line), file_s.READ_FILE))
