@@ -12,17 +12,17 @@
  */
 
 void op_pop(stack_type **stack, unsigned int line_number)
-{	
-    stack_type *temp = *stack;
+{
+	stack_type *temp = *stack;
 	(void)line_number;
 
 	if (!*stack)
 	{
 		fprintf(stderr, "L%u: can't pop an empty stack\n", line_number);
-        free_all_node(stack);
+		free_all_node(stack);
 		exit(EXIT_FAILURE);
 	}
-	
-    *stack = (*stack)->next;
-    free(temp);
+
+	*stack = (*stack)->next;
+	free(temp);
 }
