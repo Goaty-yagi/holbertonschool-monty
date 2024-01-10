@@ -7,6 +7,7 @@ CFLAGS = -Wall -pedantic -Werror -Wextra -std=gnu89
 VALG = valgrind
 VFLAGS = --leak-check=full --show-leak-kinds=all --track-origins=yes
 BT = betty
+BYTECODE = bytecodes/00.m 
 
 all:$(OBJ)
 	$(CC) $(OBJ) -o $(NAME)
@@ -18,7 +19,7 @@ clean:
 	$(RM) -rf *~ $(NAME) $(OBJ)
 
 memory:
-	$(VALG) $(VFLAGS) ./$(NAME)
+	$(VALG) $(VFLAGS) ./$(NAME) $(BYTECODE)
 
 betty:
 	$(BT) $(SRC)
