@@ -11,18 +11,21 @@ int parse_input(char *str)
 {
 	int len = strlen(str);
 	int counter = 0;
-	char *temp = str;
 
 	while (counter < len)
 	{
-		if (!isdigit(*str++))
+		if(str[counter] == '-' && counter == 0)
+		{
+			counter = counter + 1;
+			continue;
+		}
+		if (!isdigit(str[counter]))
 		{
 			if (counter == 0)
 			{
 				return (0);
 			}
-			*str = '\0';
-			*str = *temp;
+			str[counter] = '\0';
 			return (1);
 		}
 		counter = counter + 1;
@@ -45,7 +48,6 @@ int parse_input(char *str)
 void op_push(stack_type **stack, unsigned int line_number)
 {
 	stack_type *new_node;
-
 	if (!parse_input(file_s.VALUE) || file_s.VALUE[0] == '\0')
 	{
 		fprintf(stderr, "L%d: usage: push integer\n", line_number);
@@ -58,9 +60,8 @@ void op_push(stack_type **stack, unsigned int line_number)
 	{
 		fprintf(stderr, "Error: malloc failed\n");
 		free_all_node(stack);
-		exit(98);
+		exit(EXIT_FAILURE);
 	}
-
 	new_node->n = atoi(file_s.VALUE);
 	new_node->prev = NULL;
 	new_node->next = *stack;
