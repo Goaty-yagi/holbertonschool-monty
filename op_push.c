@@ -58,7 +58,7 @@ void op_push(stack_type **stack, unsigned int line_number)
 	{
 		fprintf(stderr, "Error: malloc failed\n");
 		free_all_node(stack);
-		exit(EXIT_FAILURE);
+		exit(98);
 	}
 
 	new_node->n = atoi(file_s.VALUE);
