@@ -20,4 +20,6 @@ void op_pall(stack_type **stack, unsigned int line_number)
 		printf("%d\n", current->n);
 		current = current->next;
 	}
+	strcpy(file_s.VALUE, "");
+	strcpy(file_s.OP, "");
 }
