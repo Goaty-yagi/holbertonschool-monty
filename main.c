@@ -14,7 +14,7 @@ struct file_operation file_s = {NULL, "", ""};
 void process_file_operations(stack_type **stack)
 {
 	char line[256];
-	unsigned int counter = 0, executed = 0, line_num = 1;
+	unsigned int counter = 0, executed = 0, line_num = 1, is_pall_called = 0;
 
 	instruction_t instructions[] = {
 		{"push", op_push},
@@ -38,6 +38,10 @@ void process_file_operations(stack_type **stack)
 				{
 					instructions[counter].f(stack, line_num);
 					executed = 1;
+					if (strcmp(file_s.OP, "pall") == 0)
+					{
+						is_pall_called = 1;
+					}
 					break;
 				}
 				counter++;
@@ -52,6 +56,10 @@ void process_file_operations(stack_type **stack)
 			executed = 0;
 		}
 		line_num = line_num + 1;
+	}
+	if (!is_pall_called)
+	{
+		exit(EXIT_FAILURE);
 	}
 }
 
