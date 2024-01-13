@@ -15,6 +15,7 @@ void process_file_operations(stack_type **stack)
 {
 	char line[256];
 	unsigned int counter = 0, executed = 0, line_num = 1;
+
 	instruction_t instructions[] = {
 		{"push", op_push},
 		{"pall", op_pall},
@@ -49,8 +50,8 @@ void process_file_operations(stack_type **stack)
 			}
 			counter = 0;
 			executed = 0;
-			line_num++;
 		}
+		line_num = line_num + 1;
 	}
 }
 
@@ -69,7 +70,6 @@ void process_file_operations(stack_type **stack)
  * Return: EXIT_SUCCESS upon successful execution, EXIT_FAILURE if arguments
  * are incorrect or if file opening fails.
  */
-
 
 int main(int argc, char *argv[])
 {
