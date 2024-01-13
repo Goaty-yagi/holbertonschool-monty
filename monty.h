@@ -64,5 +64,6 @@ void op_add(stack_type **stack, unsigned int line_number);
 void op_nop(stack_type **stack, unsigned int line_number);
 void define_global_var(char *line);
 void free_all_node(stack_type **stack);
+void process_file_operations(stack_type **stack);
 
 #endif
