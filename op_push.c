@@ -11,22 +11,17 @@ int parse_input(char *str)
 {
 	int len = strlen(str);
 	int counter = 0;
-	
+
 	while (counter < len)
 	{
-		if(str[counter] == '-' && counter == 0)
+		if (str[counter] == '-' && counter == 0)
 		{
 			counter = counter + 1;
 			continue;
 		}
 		if (!isdigit(str[counter]))
 		{
-			if (counter == 0)
-			{
-				return (0);
-			}
-			str[counter] = '\0';
-			return (1);
+			return (0);
 		}
 		counter = counter + 1;
 	}
@@ -48,7 +43,7 @@ int parse_input(char *str)
 void op_push(stack_type **stack, unsigned int line_number)
 {
 	stack_type *new_node;
-	
+
 	if (!parse_input(file_s.VALUE) || file_s.VALUE[0] == '\0')
 	{
 		fprintf(stderr, "L%d: usage: push integer\n", line_number);
