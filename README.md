@@ -1,4 +1,7 @@
-![image of simple shell](https://pbs.twimg.com/media/CFYYWy6UEAE9Ow-.png)
+<p align="center">
+    <img src="https://pbs.twimg.com/media/CFYYWy6UEAE9Ow-.png">
+</p>
+
 # holbertonschool-monty
 This project implements an interpreter for Monty ByteCodes files. Monty ByteCodes is a programming language inspired by the Monty Python comedy group, utilizing a custom bytecode format for its instructions.
 
@@ -6,8 +9,12 @@ This project implements an interpreter for Monty ByteCodes files. Monty ByteCode
 
 - [Overview](#overview)
 - [Description](#description)
+- [Dependency](#dependency)
 - [Flowchart](#flowchart)
-- [Installation&Example](#installation&example)
+- [Features](#features)
+- [Compile](#compile)
+- [Usage](#usage)
+- [Installation](#installation)
 - [ExpectedError](#expectederrors)
 - [Authors](#authors)
 - [Bugs](#bugs)
@@ -20,7 +27,7 @@ The interpreter is designed to read Monty ByteCodes files, parse their instructi
 
 
 
-## Description :bellhop_bell:
+## Description
 
 The interpreter is designed to read Monty ByteCodes files, parse their instructions, and execute them accordingly. It functions by following the instructions encoded within the bytecode file, performing operations specified by the bytecode commands.
 
@@ -33,13 +40,7 @@ The interpreter is designed to read Monty ByteCodes files, parse their instructi
 - GNU Make 4.2.1 
 ```
 
-## Flowchart :chart:
-
-Below is a flowchart showing the basic implementation of how our Monty Interpreter works.
-
-![flowchart](https://github.com/WarrenTheRabbit/holbertonschool-simple_shell/blob/main/flowchart.png)
-
-
+## Flowchart
 
 ## Features
 
@@ -57,7 +58,7 @@ Below is a flowchart showing the basic implementation of how our Monty Interpret
 | add            | Adds the top two elements of the stack.|
 | nop            | Does nothing.|
 
-## Compile with Makefile
+## Compile
 
 Install gcc: install gcc with `apt-get install gcc` (if necessary)
 Install make: install make with `apt-get install make` (if necessary)
@@ -73,7 +74,7 @@ Execute: Run the interpreter, providing the Monty ByteCodes file as an argument.
 $ ./monty bytecodes/00.m
 ```
 
-## Installation&Example :electric_plug:
+## Installation
 
 First, clone this repository to your local machine:
 
@@ -133,7 +134,7 @@ julien@ubuntu:~/monty$ ./monty bytecodes/your_monty.m
 3
 20
 ```
-You might need to make you file executable with `chmod +x bytecodes/your_monty.m` (if necessary)
+You might need to make your file executable with `chmod +x bytecodes/your_monty.m` (if necessary)
 
 ## ExpectedErrors
 While using this software, users may encounter specific known issues or errors. Here are a few examples:
@@ -157,23 +158,23 @@ While using this software, users may encounter specific known issues or errors. 
 - `L<line_number>: can't add, stack too short`: If the stack contains less than two elements with add operation.
 
 
-## Authors :selfie:
+## Authors
 
 - Warren Markham https://github.com/WarrenTheRabbit
 - Daniel Colorado Londono https://github.com/DanielColoradoL
 - Nobuhiro Funahashi https://github.com/Goaty-yagi
-## Bugs :clown_face:
+## Bugs
 
 Report bugs on the GitHub Issues page.
 
-## Contributing :man_juggling:
+## Contributing
 
 Contributions are welcome! If you'd like to contribute to the interpreter's development or report issues, please follow the guidelines outlined in [CONTRIBUTING.md].
 
-## License :label:
+## License
 
 This project is released under the MIT License
 
-## Acknowledgements :triangular_ruler:
+## Acknowledgements
 
 This project was developed as part of the curriculum for [Holberton School](https://www.holbertonschool.com/), a campus-based full-stack software engineering program. We would like to acknowledge the guidance and support received from our peers and mentors during the development of this Monty Interpreter project.
