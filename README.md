@@ -59,11 +59,11 @@ The interpreter is designed to read Monty ByteCodes files, parse their instructi
 | nop            | Does nothing.|
 
 ## Compile
+This repository contains a makefile, and with makefile it allows you to compile all of the our code to your own main.c with simple command `make`.
 
-Install gcc: install gcc with `apt-get install gcc` (if necessary)
-Install make: install make with `apt-get install make` (if necessary)
+- Install gcc: install gcc with `apt-get install gcc` (if necessary)
+- Install make: install make with `apt-get install make` (if necessary)
 
-Our repository contains a makefile, and with makefile it allows you to compile all of the our code to your own main.c with simple command `make`.
 
 ## Usage
 
@@ -169,7 +169,7 @@ Report bugs on the GitHub Issues page.
 
 ## Contributing
 
-Contributions are welcome! If you'd like to contribute to the interpreter's development or report issues, please follow the guidelines outlined in [CONTRIBUTING.md].
+Contributions are welcome! If you'd like to contribute to the interpreter's development or report issues, please follow the guidelines outlined in [CONTRIBUTING.md](https://github.com/Goaty-yagi/holbertonschool-monty/blob/main/CONTRIBUTING.md).
 
 ## License
 
